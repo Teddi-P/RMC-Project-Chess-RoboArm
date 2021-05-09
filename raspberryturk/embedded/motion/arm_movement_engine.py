@@ -51,4 +51,4 @@ class ArmMovementEngine(object):
         pt = np.array(pt).reshape(-1, 2)
         index = self._tree.query(pt, return_distance=False).ravel()[0]
         calibrated_offset = 105
-        return np.array([index/1024+calibrated_offset, index%1024])
+        return np.array([index / 1024 + calibrated_offset, index % 1024])

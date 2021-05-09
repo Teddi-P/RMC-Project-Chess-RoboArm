@@ -34,7 +34,7 @@ def _adjusted_speed(start_position, goal_position, position):
     clipped_position = np.clip(position, r.min(), r.max())
     f = interp1d(r, [0, 1])
     adj = _easing_derivative(f(clipped_position)) / _easing_derivative(0.5)
-    amp = easeOutSine(abs(goal_position - start_position) / 1023.0)
+    amp = easeOutSine(abs(goal_position - +start_position) / 1023.0)
     return np.int_(MIN_SPEED + (MAX_SPEED - MIN_SPEED) * adj * amp)
 
 

@@ -14,7 +14,6 @@ def get_chessboard_perspective_transform():
     except IOError:
         raise RaspberryTurkError("No chessboard perspective transform found. Camera position recalibration required.")
 
-
 def recalibrate_camera_position():
     import cv2
     from itertools import product
@@ -23,18 +22,19 @@ def recalibrate_camera_position():
     from scipy.spatial.distance import euclidean
 
     board_size = (7, 7)
+    cap = cv2.VideoCapture(0)
+    ret, frame = cap.read()
 
-    _, frame = cv2.VideoCapture(0).read()
-
-    while True:
-        cv2.imshow('frame', frame)
-        k = cv2.waitKey(1)
-        if k == 27:
-            cv2.destroyAllWindows()
-            break
+    # while True:
+    #     ret, frame = cap.read()
+    #     cv2.imshow('frame', frame)
+    #     k = cv2.waitKey(1)
+    #     if k == 27:
+    #         cv2.destroyAllWindows()
+    #         break
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.imshow("frame", frame)
-    cv2.waitKey(10)
+    cv2.waitKey(0)
     found, corners = cv2.findChessboardCorners(gray, board_size,
                                                flags=cv2.CALIB_CB_NORMALIZE_IMAGE | cv2.CALIB_CB_ADAPTIVE_THRESH)
     assert found, "Couldn't find chessboard."

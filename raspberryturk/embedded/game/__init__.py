@@ -4,9 +4,11 @@ import chess
 import time
 from raspberryturk import games_path
 from chess.pgn import read_game, Game, FileExporter
+# Python有一个chess library，这里的pgn调用的就是这个库的一些方法
+# pgn是一种棋类游戏过程的文件
 
 TEMPORARY_GAME_PATH = os.path.extsep.join(['tmp', 'pgn'])
-CURRENT_GAME_PATH = games_path(os.path.extsep.join(['game', 'pgn']))
+CURRENT_GAME_PATH = games_path(os.path.extsep.join(['game', 'pgn']))  # 这个path我觉得应该是在游戏过程中的cache
 
 
 def _logger():

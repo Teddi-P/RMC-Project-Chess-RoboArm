@@ -23,8 +23,8 @@ class Coordinator(object):
         self.arm = Arm()
         self._logger = logging.getLogger(__name__)
 
-    def move_piece(self, move, board):
-        if _castling(move, board):
+    def move_piece(self, move, board):  # 应该是最上层的move方法
+        if _castling(move, board):  # 满足移动的条件
             a_side = chess.square_file(move.to_square) < chess.square_file(move.from_square)
             from_file_index = 0 if a_side else 7
             to_file_index = 3 if a_side else 5
