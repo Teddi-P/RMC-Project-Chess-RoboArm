@@ -11,7 +11,7 @@ class Dataset(object):
         self.metadata = metadata
 
     def save_file(self, filename):
-        with open(filename, 'w') as f:
+        with open(filename, 'wb') as f:
             np.savez(f, X_train=self.X_train,
                         X_val=self.X_val,
                         y_train=self.y_train,
