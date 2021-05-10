@@ -59,7 +59,7 @@ def recalibrate_camera_position():
     m_y.fit(X_train, z[:, 1])
 
     def predict(i, j):
-        features = poly.fit_transform(np.array([i, j]))
+        features = poly.fit_transform([np.array([i, j])])
         return m_x.predict(features), m_y.predict(features)
 
     P = []
